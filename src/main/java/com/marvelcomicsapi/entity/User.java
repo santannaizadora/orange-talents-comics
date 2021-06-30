@@ -1,19 +1,24 @@
 package com.marvelcomicsapi.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.Email;
 
 import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
-public class User implements Serializable {
+public class User implements Serializable{
  
 		private static final long serialVersionUID = 1L;
  
@@ -34,17 +39,23 @@ public class User implements Serializable {
 	
 		@Column(nullable = false)
 		private Date birthDate;
+		
+		@ManyToMany
+		@JoinTable(name = "user_comics", 
+  joinColumns = @JoinColumn(name = "student_id"), 
+  inverseJoinColumns = @JoinColumn(name = "course_id"))
+		private List<Comic> userComics = new ArrayList<>();
 	
 		public User() {
 		
 		}
  
-		public User(Integer id, String name, String email, String cpf, Date birthDate) {
-			this.id = id;
-			this.name = name;
-			this.email = email;
-			this.cpf = cpf;
-			this.birthDate = birthDate;
+		public User(User user) {
+			this.id = user.getId();
+			this.name = user.getName();
+			this.email = user.getEmail();
+			this.cpf = user.getCpf();
+			this.birthDate = user.getBirthDate();
 		}
  
 		public Integer getId() {
