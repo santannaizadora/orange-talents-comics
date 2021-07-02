@@ -1,18 +1,13 @@
 package com.marvelcomicsapi.entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.validation.constraints.Email;
 
 import org.hibernate.validator.constraints.br.CPF;
@@ -40,12 +35,7 @@ public class User implements Serializable{
 		@Column(nullable = false)
 		private Date birthDate;
 		
-		@ManyToMany
-		@JoinTable(name = "user_comics", 
-  joinColumns = @JoinColumn(name = "student_id"), 
-  inverseJoinColumns = @JoinColumn(name = "course_id"))
-		private List<Comic> userComics = new ArrayList<>();
-	
+
 		public User() {
 		
 		}
@@ -96,6 +86,7 @@ public class User implements Serializable{
  
 		public void setBirthDate(Date birthDate) {
 			this.birthDate = birthDate;
-		}
+		}		
+
  
 }

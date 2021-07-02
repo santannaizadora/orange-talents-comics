@@ -1,15 +1,12 @@
 package com.marvelcomicsapi.entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+
+
 
 @Entity
 public class Comic implements  Serializable {
@@ -17,12 +14,12 @@ public class Comic implements  Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	private int id;
+	private Integer id;
 	
 	@Column(nullable = false)
 	private String title;
 	
-	@Column(nullable = true)
+	@Column(nullable = false)
 	private Double price;
 	
 	@Column(nullable = true)
@@ -34,9 +31,8 @@ public class Comic implements  Serializable {
 	@Column(nullable = true)
 	private String description;
 	
-	@ManyToMany(mappedBy = "userComics")
-	private List<User> comicUser = new ArrayList<>();
-	
+	private Integer userId;
+
 	
 	public Comic() {
 		
@@ -49,9 +45,10 @@ public class Comic implements  Serializable {
 		this.author = comic.getAuthor();
 		this.isbn = comic.getIsbn();
 		this.description = comic.getDescription();
+		this.userId = comic.getUserId();
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	} 
 
@@ -98,7 +95,14 @@ public class Comic implements  Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	
 
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
+
+	
 }
