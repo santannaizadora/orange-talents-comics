@@ -1,13 +1,18 @@
 package com.marvelcomicsapi.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 
 import org.hibernate.validator.constraints.br.CPF;
@@ -35,6 +40,8 @@ public class User implements Serializable{
 		@Column(nullable = false)
 		private Date birthDate;
 		
+		@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+		private List<UserComic> user_comic = new ArrayList<>();
 
 		public User() {
 		

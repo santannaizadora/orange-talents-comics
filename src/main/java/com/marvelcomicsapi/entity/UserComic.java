@@ -3,11 +3,15 @@ package com.marvelcomicsapi.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,14 +27,18 @@ public class UserComic implements Serializable{
 	@Column(nullable = false)
 	private Date date;
 	
-	@Column(nullable = false)
-	private Integer comic_id;
+	@ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL, optional = false)
+	@JoinColumn(name="id", insertable = false, updatable = false)
+	private User user;
 	
-	@Column(nullable = false)
 	private Integer user_id;
 	
+	@ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL, optional = false)
+	@JoinColumn(name="id", insertable = false, updatable = false)
+	private Comic comic;
 	
-
+	private Integer comic_id;
+	
 	public UserComic() {
 		
 	}	
@@ -72,6 +80,9 @@ public class UserComic implements Serializable{
 
 	public void setUser_id(Integer user_id) {
 		this.user_id = user_id;
-	}	
+	}
+
+	
+	
 
 }
