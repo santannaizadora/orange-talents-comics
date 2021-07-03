@@ -19,7 +19,7 @@ public class Comic implements  Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	private Integer id;
+	private Integer idComic;
 	
 	@Column(nullable = false)
 	private String title;
@@ -36,32 +36,28 @@ public class Comic implements  Serializable {
 	@Column(nullable = true)
 	private String description;
 	
-	private Integer userId;
-	
 	@OneToMany(mappedBy = "comic", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private List<UserComic> user_comic = new ArrayList<>();
-
+	private List<UserComic> userComics = new ArrayList<>();
 	
 	public Comic() {
 		
 	}
 
 	public Comic(Comic comic) {
-		this.id = comic.getId();
+		this.idComic = comic.getIdComic();
 		this.title = comic.getTitle();
 		this.price = comic.getPrice();
 		this.author = comic.getAuthor();
 		this.isbn = comic.getIsbn();
 		this.description = comic.getDescription();
-		this.userId = comic.getUserId();
 	}
 
-	public Integer getId() {
-		return id;
+	public Integer getIdComic() {
+		return idComic;
 	} 
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setIdComic(Integer idComic) {
+		this.idComic = idComic;
 	}
 
 	public String getTitle() {
@@ -102,14 +98,6 @@ public class Comic implements  Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public Integer getUserId() {
-		return userId;
-	}
-
-	public void setUserId(Integer userId) {
-		this.userId = userId;
 	}
 
 	

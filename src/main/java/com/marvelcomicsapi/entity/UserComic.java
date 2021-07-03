@@ -14,48 +14,73 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
-@Table(name = "user_comics")
+@Table(name = "userComic")
 public class UserComic implements Serializable{
 	 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Integer idUserComic;
 	
 	@Column(nullable = false)
 	private Date date;
 	
-	@ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL, optional = false)
-	@JoinColumn(name="id", insertable = false, updatable = false)
+	@ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinColumn(name="idUser", insertable = false, updatable = false)
+	@JsonIgnore
 	private User user;
 	
-	private Integer user_id;
-	
-	@ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL, optional = false)
-	@JoinColumn(name="id", insertable = false, updatable = false)
+	@ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinColumn(name="idComic", insertable = false, updatable = false)
+	@JsonIgnore
 	private Comic comic;
-	
-	private Integer comic_id;
+
+	private Integer idUser;
+	private Integer idComic;
 	
 	public UserComic() {
 		
 	}	
 
 	public UserComic(UserComic userComic) {
-		this.id = userComic.getId();
+		this.idUserComic = userComic.getIdUserComic();
 		this.date = userComic.getDate();
-		this.comic_id = userComic.getComic_id();
-		this.user_id = userComic.getUser_id();
+		this.user = userComic.getUser();
+		this.comic = userComic.getComic();
+		this.idUser = userComic.getIdUser();
+		this.idComic = userComic.getIdComic();
 	}
 
-	public Integer getId() {
-		return id;
+	public User getUser() {
+		return user;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Comic getComic() {
+		return comic;
+	}
+
+	public void setComic(Comic comic) {
+		this.comic = comic;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public Integer getIdUserComic() {
+		return idUserComic;
+	}
+
+	public void setIdUserComic(Integer idUserComic) {
+		this.idUserComic = idUserComic;
 	}
 
 	public Date getDate() {
@@ -66,23 +91,20 @@ public class UserComic implements Serializable{
 		this.date = date;
 	}
 
-	public Integer getComic_id() {
-		return comic_id;
+	public Integer getIdComic() {
+		return idComic;
 	}
 
-	public void setComic_id(Integer comic_id) {
-		this.comic_id = comic_id;
+	public void setIdComic(Integer idComic) {
+		this.idComic = idComic;
 	}
 
-	public Integer getUser_id() {
-		return user_id;
+	public Integer getIdUser() {
+		return idUser;
 	}
 
-	public void setUser_id(Integer user_id) {
-		this.user_id = user_id;
+	public void setIdUser(Integer idUser) {
+		this.idUser = idUser;
 	}
-
-	
-	
 
 }
