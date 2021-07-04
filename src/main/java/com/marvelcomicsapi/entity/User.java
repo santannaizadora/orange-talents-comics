@@ -24,7 +24,7 @@ public class User implements Serializable{
  
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
-		private Integer id;
+		private Integer idUser;
 	
 		@Column(nullable = false)
 		private String name;
@@ -48,19 +48,19 @@ public class User implements Serializable{
 		}
  
 		public User(User user) {
-			this.id = user.getId();
+			this.idUser = user.getIdUser();
 			this.name = user.getName();
 			this.email = user.getEmail();
 			this.cpf = user.getCpf();
 			this.birthDate = user.getBirthDate();
 		}
  
-		public Integer getId() {
-			return id;
+		public Integer getIdUser() {
+			return idUser;
 		}
  
-		public void setId(Integer id) {
-			this.id = id;
+		public void setIdUser(Integer idUser) {
+			this.idUser = idUser;
 		}
  
 		public String getName() {

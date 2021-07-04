@@ -31,9 +31,9 @@ public class UserController {
 		return ResponseEntity.ok().body(users);
 	}
 	
-	@GetMapping("/{id}")
-	public ResponseEntity<User> findOne(@PathVariable(value = "id")Integer id) {
-		User user = this.userService.findOne(id);
+	@GetMapping("/{idUser}")
+	public ResponseEntity<User> findOne(@PathVariable(value = "idUser")Integer idUser) {
+		User user = this.userService.findOne(idUser);
 		return ResponseEntity.ok().body(user);
 	}
 	
@@ -42,7 +42,7 @@ public class UserController {
 		
 		User user = this.userService.save(dto);
 		
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(user.getId()).toUri();
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{idUser}").buildAndExpand(user.getIdUser()).toUri();
 
 		return ResponseEntity.created(uri).build();
 	}

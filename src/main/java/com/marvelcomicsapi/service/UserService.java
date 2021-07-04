@@ -18,22 +18,19 @@ public class UserService {
 		private UserRepository userRepository;
 	
 		public User save(User dto) {
-			
-
-				dto.setId(null);
+				dto.setIdUser(null);
 				User userToSave = this.fromDto(dto);
 
-				return this.userRepository.save(userToSave);
-						
+				return this.userRepository.save(userToSave);	
 		}
 		
 		public List<User> findAll() {
 			return this.userRepository.findAll();
 		}
 		
-		public User findOne(Integer id) {
-			Optional<User> user = this.userRepository.findById(id);
-			return user.orElseThrow(() -> new NotFoundException("User with id " + id + " not found"));
+		public User findOne(Integer idUser) {
+			Optional<User> user = this.userRepository.findById(idUser);
+			return user.orElseThrow(() -> new NotFoundException("User with idUser " + idUser + " not found"));
 		}
 		
 		public User fromDto(User user) {

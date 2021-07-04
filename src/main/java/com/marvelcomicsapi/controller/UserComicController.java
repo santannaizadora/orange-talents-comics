@@ -12,7 +12,7 @@ import com.marvelcomicsapi.entity.UserComic;
 import com.marvelcomicsapi.service.UserComicService;
 
 @RestController
-@RequestMapping("/comics")
+@RequestMapping("/usercomics")
 public class UserComicController {
 	
 	@Autowired

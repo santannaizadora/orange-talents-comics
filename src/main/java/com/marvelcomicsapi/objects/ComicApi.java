@@ -1,6 +1,5 @@
 package com.marvelcomicsapi.objects;
 
-import java.sql.Date;
 import java.util.List;
 
 
@@ -11,7 +10,7 @@ public class ComicApi {
     private Double issueNumber;
     private String variantDescription;
     private String description;
-    private Date modified;
+    private String modified;
     private String isbn;
     private String upc;
     private String diamondCode;
@@ -76,11 +75,11 @@ public class ComicApi {
         this.variantDescription = variantDescription;
     }
 
-    public Date getModified() {
+    public String getModified() {
         return modified;
     }
 
-    public void setModified(Date modified) {
+    public void setModified(String modified) {
         this.modified = modified;
     }
 

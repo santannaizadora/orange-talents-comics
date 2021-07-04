@@ -1,10 +1,8 @@
 package com.marvelcomicsapi.objects;
 
-import java.util.Date;
-
 public class ComicDate {
     private String type;
-    private Date date;
+    private String date;
 
     public String getType() {
         return type;
@@ -14,11 +12,11 @@ public class ComicDate {
         this.type = type;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 }

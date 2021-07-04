@@ -25,7 +25,7 @@ public class Comic implements  Serializable {
 	private String title;
 	
 	@Column(nullable = false)
-	private Double price;
+	private Float price;
 	
 	@Column(nullable = true)
 	private String author;
@@ -68,11 +68,11 @@ public class Comic implements  Serializable {
 		this.title = title;
 	}
 
-	public Double getPrice() {
+	public Float getPrice() {
 		return price;
 	}
 
-	public void setPrice(Double price) {
+	public void setPrice(Float price) {
 		this.price = price;
 	}
 
