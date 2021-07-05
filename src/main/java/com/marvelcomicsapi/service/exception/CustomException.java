@@ -29,4 +29,12 @@ public class CustomException extends ResponseEntityExceptionHandler {
         return new ResponseEntity<Object>(exceptionResponse, HttpStatus.BAD_REQUEST);
     }
     
+    @ExceptionHandler(Exception.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ResponseEntity<Object> handleAllUncaughtException(Exception ex, WebRequest request) {
+        ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), "Ocorreu um erro interno, por favor tente novamente.", 
+        		request.getDescription(true));
+
+        return new ResponseEntity<Object>(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }

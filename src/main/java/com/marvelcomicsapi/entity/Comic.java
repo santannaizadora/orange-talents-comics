@@ -31,7 +31,7 @@ public class Comic implements  Serializable {
 	@Column(nullable = true)
 	private String isbn;
 	
-	@Column(nullable = true)
+	@Column(nullable = true, length = 1500)
 	private String description;
 	
 	@OneToMany(mappedBy = "comic", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

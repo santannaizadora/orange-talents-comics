@@ -31,6 +31,8 @@ public class UserService {
 		
 		public UserResponse findOne(Integer idUser) {
 			Optional<User> user = this.userRepository.findById(idUser);
+			if(user.isEmpty())
+				throw new NotFoundException("Usuário com id " + idUser + " não foi encontrado");
 			
 			User userToResponse = user.get();
 
