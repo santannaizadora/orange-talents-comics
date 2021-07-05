@@ -1,6 +1,6 @@
 package com.marvelcomicsapi.controller;
+
 import java.net.URI;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.marvelcomicsapi.entity.User;
+import com.marvelcomicsapi.objects.UserResponse;
 import com.marvelcomicsapi.service.UserService;
 
 
@@ -22,18 +23,11 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
-
-	
-	@GetMapping
-	public ResponseEntity<List<User>> findAll() {
-		List<User> users = this.userService.findAll();
-
-		return ResponseEntity.ok().body(users);
-	}
 	
 	@GetMapping("/{idUser}")
-	public ResponseEntity<User> findOne(@PathVariable(value = "idUser")Integer idUser) {
-		User user = this.userService.findOne(idUser);
+	public ResponseEntity<UserResponse> findOne(@PathVariable(value = "idUser")Integer idUser) {
+		UserResponse user = this.userService.findOne(idUser);
+		
 		return ResponseEntity.ok().body(user);
 	}
 	

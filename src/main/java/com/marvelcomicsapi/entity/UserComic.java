@@ -14,10 +14,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "userComic")
+@Table(name = "user_comic")
 public class UserComic implements Serializable{
 	 
 	private static final long serialVersionUID = 1L;
@@ -30,17 +30,14 @@ public class UserComic implements Serializable{
 	private Date date;
 	
 	@ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
-	@JoinColumn(name="idUser", insertable = false, updatable = false)
-	@JsonIgnore
+	@JoinColumn(name="idUser", insertable = true, updatable = false)
+	@JsonIgnoreProperties(value = {"userComics", "hibernateLazyInitializer"})
 	private User user;
 	
 	@ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
-	@JoinColumn(name="idComic", insertable = false, updatable = false)
-	@JsonIgnore
+	@JoinColumn(name="idComic", insertable = true, updatable = false)
+	@JsonIgnoreProperties(value = {"userComics", "hibernateLazyInitializer"})
 	private Comic comic;
-
-	private Integer idUser;
-	private Integer idComic;
 	
 	public UserComic() {
 		
@@ -49,26 +46,7 @@ public class UserComic implements Serializable{
 	public UserComic(UserComic userComic) {
 		this.idUserComic = userComic.getIdUserComic();
 		this.date = userComic.getDate();
-		this.user = userComic.getUser();
 		this.comic = userComic.getComic();
-		this.idUser = userComic.getIdUser();
-		this.idComic = userComic.getIdComic();
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	public Comic getComic() {
-		return comic;
-	}
-
-	public void setComic(Comic comic) {
-		this.comic = comic;
 	}
 
 	public static long getSerialversionuid() {
@@ -91,20 +69,20 @@ public class UserComic implements Serializable{
 		this.date = date;
 	}
 
-	public Integer getIdComic() {
-		return idComic;
+	public User getUser() {
+		return user;
 	}
 
-	public void setIdComic(Integer idComic) {
-		this.idComic = idComic;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
-	public Integer getIdUser() {
-		return idUser;
+	public Comic getComic() {
+		return comic;
 	}
 
-	public void setIdUser(Integer idUser) {
-		this.idUser = idUser;
+	public void setComic(Comic comic) {
+		this.comic = comic;
 	}
 
 }

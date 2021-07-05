@@ -1,59 +1,49 @@
-package com.marvelcomicsapi.entity;
+package com.marvelcomicsapi.objects;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+public class ComicResponse {
 
-@Entity
-public class Comic implements  Serializable {
-	
-	private static final long serialVersionUID = 1L;
-	
-	@Id
 	private Integer idComic;
-	
-	@Column(nullable = false)
 	private String title;
-	
-	@Column(nullable = false)
 	private Float price;
-	
-	@Column(nullable = true)
 	private String author;
-	
-	@Column(nullable = true)
 	private String isbn;
-	
-	@Column(nullable = true)
 	private String description;
-	
-	@OneToMany(mappedBy = "comic", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<UserComic> userComics = new ArrayList<>();
+	private String discountDay;
+	private Boolean discountActive;
 
-	public Comic() {
+	public ComicResponse() {
 		
 	}
 
-	public Comic(Comic comic) {
+	public ComicResponse(Integer idComic, String title, Float price, String author, String isbn, 
+			String description, String discountDay, Boolean discountActive) {
+		this.idComic = idComic;
+		this.title = title;
+		this.price = price;
+		this.author = author;
+		this.isbn = isbn;
+		this.description = description;
+		this.discountDay = discountDay;
+		this.discountActive = discountActive;
+	}
+
+	public ComicResponse(ComicResponse comic) {
 		this.idComic = comic.getIdComic();
 		this.title = comic.getTitle();
 		this.price = comic.getPrice();
 		this.author = comic.getAuthor();
 		this.isbn = comic.getIsbn();
 		this.description = comic.getDescription();
-		this.userComics = comic.getUserComics();
+		this.discountDay = comic.getDiscountDay();
+		this.discountActive = comic.getDiscountActive();
 	}
-
+	
 	public Integer getIdComic() {
 		return idComic;
-	} 
+	}
 
 	public void setIdComic(Integer idComic) {
 		this.idComic = idComic;
@@ -99,13 +89,19 @@ public class Comic implements  Serializable {
 		this.description = description;
 	}
 
-	public List<UserComic> getUserComics() {
-		return userComics;
+	public String getDiscountDay() {
+		return discountDay;
 	}
 
-	public void setUserComics(List<UserComic> userComics) {
-		this.userComics = userComics;
+	public void setDiscountDay(String discountDay) {
+		this.discountDay = discountDay;
 	}
 
-	
+	public Boolean getDiscountActive() {
+		return discountActive;
+	}
+
+	public void setDiscountActive(Boolean discountActive) {
+		this.discountActive = discountActive;
+	}
 }

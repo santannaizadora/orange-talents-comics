@@ -41,7 +41,7 @@ public class User implements Serializable{
 		private Date birthDate;
 		
 		@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-		private List<UserComic> user_comic = new ArrayList<>();
+		private List<UserComic> userComics = new ArrayList<>();
 
 		public User() {
 		
@@ -53,6 +53,7 @@ public class User implements Serializable{
 			this.email = user.getEmail();
 			this.cpf = user.getCpf();
 			this.birthDate = user.getBirthDate();
+			this.userComics = user.getUserComics();
 		}
  
 		public Integer getIdUser() {
@@ -94,6 +95,14 @@ public class User implements Serializable{
 		public void setBirthDate(Date birthDate) {
 			this.birthDate = birthDate;
 		}		
+
+		public List<UserComic> getUserComics() {
+			return userComics;
+		}
+
+		public void setUserComics(List<UserComic> userComics) {
+			this.userComics = userComics;
+		}
 
  
 }

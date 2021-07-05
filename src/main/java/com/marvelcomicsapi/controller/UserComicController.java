@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.marvelcomicsapi.entity.UserComic;
+import com.marvelcomicsapi.objects.UserComicRequest;
 import com.marvelcomicsapi.service.UserComicService;
 
 @RestController
@@ -19,7 +20,7 @@ public class UserComicController {
 	private UserComicService userComicService;
 	
 	@PostMapping
-	public ResponseEntity<?> save(@RequestBody UserComic dto) {
+	public ResponseEntity<?> save(@RequestBody UserComicRequest dto) {
 		
 		
 		return new ResponseEntity<>(userComicService.save(dto), HttpStatus.CREATED);

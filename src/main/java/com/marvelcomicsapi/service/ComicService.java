@@ -23,30 +23,28 @@ public class ComicService {
 		this.comicClient = comicClient;
 	}
 	
-	public void save(Integer idComic) {
-		Optional<Comic> comic = this.comicRepository.findById(idComic);
-		
-		if(comic.isEmpty()) {
-			Comic comicToSave = new Comic();
+	public Optional<Comic> save(Integer idComic) {
+		Comic comicToSave = new Comic();
 
-			ComicApi comicApiMarvel = comicClient.getComicById(idComic).getData().getResults().get(0);
-			System.out.println(comicApiMarvel.getId());
-			comicToSave.setIdComic(comicApiMarvel.getId());
-			comicToSave.setTitle(comicApiMarvel.getTitle());
-			comicToSave.setDescription(comicApiMarvel.getDescription());
-			comicToSave.setIsbn(comicApiMarvel.getIsbn());
-			comicToSave.setPrice(comicApiMarvel.getPrices().get(0).getPrice());
+		ComicApi comicApiMarvel = comicClient.getComicById(idComic).getData().getResults().get(0);
 
-			for(CreatorSummary author : comicApiMarvel.getCreators().getItems()) {
-				if (comicToSave.getAuthor() != null && author.getName() != null) {
-					comicToSave.setAuthor(author.getName() + "; " + comicToSave.getAuthor());
-				} else {
-					comicToSave.setAuthor(author.getName());
-				}
+		comicToSave.setIdComic(comicApiMarvel.getId());
+		comicToSave.setTitle(comicApiMarvel.getTitle());
+		comicToSave.setDescription(comicApiMarvel.getDescription());
+		comicToSave.setIsbn(comicApiMarvel.getIsbn());
+		comicToSave.setPrice(comicApiMarvel.getPrices().get(0).getPrice());
+
+		for(CreatorSummary author : comicApiMarvel.getCreators().getItems()) {
+			if (comicToSave.getAuthor() != null && author.getName() != null) {
+				comicToSave.setAuthor(author.getName() + "; " + comicToSave.getAuthor());
+			} else {
+				comicToSave.setAuthor(author.getName());
 			}
-			
-			comicRepository.save(comicToSave);
 		}
+
+		comicRepository.save(comicToSave);
+		
+		return this.comicRepository.findById(idComic);
 	}
 	
 	public Comic fromDto(Comic comic) {
