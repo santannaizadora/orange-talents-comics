@@ -1,4 +1,4 @@
-package com.marvelcomicsapi.objects;
+package com.marvelcomicsapi.objects.request;
 
 import java.sql.Date;
 

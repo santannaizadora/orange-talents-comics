@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.marvelcomicsapi.entity.User;
-import com.marvelcomicsapi.objects.UserResponse;
+import com.marvelcomicsapi.objects.response.UserResponse;
 import com.marvelcomicsapi.service.UserService;
 
 

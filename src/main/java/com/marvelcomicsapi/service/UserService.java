@@ -10,9 +10,9 @@ import org.springframework.stereotype.Service;
 
 import com.marvelcomicsapi.entity.User;
 import com.marvelcomicsapi.entity.UserComic;
-import com.marvelcomicsapi.objects.ComicResponse;
-import com.marvelcomicsapi.objects.UserComicResponse;
-import com.marvelcomicsapi.objects.UserResponse;
+import com.marvelcomicsapi.objects.response.ComicResponse;
+import com.marvelcomicsapi.objects.response.UserComicResponse;
+import com.marvelcomicsapi.objects.response.UserResponse;
 import com.marvelcomicsapi.repository.UserRepository;
 import com.marvelcomicsapi.service.exception.NotFoundException;
 

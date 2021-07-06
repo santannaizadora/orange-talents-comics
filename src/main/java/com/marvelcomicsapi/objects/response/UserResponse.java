@@ -1,4 +1,4 @@
-package com.marvelcomicsapi.objects;
+package com.marvelcomicsapi.objects.response;
 
 import java.util.ArrayList;
 import java.util.Date;

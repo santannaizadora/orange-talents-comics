@@ -37,4 +37,5 @@ public class CustomException extends ResponseEntityExceptionHandler {
 
         return new ResponseEntity<Object>(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
+    
 }

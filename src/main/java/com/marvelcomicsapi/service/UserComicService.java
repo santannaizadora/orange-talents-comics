@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.marvelcomicsapi.entity.Comic;
 import com.marvelcomicsapi.entity.User;
 import com.marvelcomicsapi.entity.UserComic;
-import com.marvelcomicsapi.objects.UserComicRequest;
+import com.marvelcomicsapi.objects.request.UserComicRequest;
 import com.marvelcomicsapi.repository.ComicRepository;
 import com.marvelcomicsapi.repository.UserComicRepository;
 import com.marvelcomicsapi.repository.UserRepository;

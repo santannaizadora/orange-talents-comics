@@ -30,13 +30,13 @@ public class ComicService {
 
 		comicToSave.setIdComic(comicApiMarvel.getId());
 		comicToSave.setTitle(comicApiMarvel.getTitle());
-		comicToSave.setDescription(comicApiMarvel.getDescription());
+		comicToSave.setDescription(comicApiMarvel.getDescription().replaceAll("\r<br>", "").replaceAll("\r\n", ""));
 		comicToSave.setIsbn(comicApiMarvel.getIsbn());
 		comicToSave.setPrice(comicApiMarvel.getPrices().get(0).getPrice());
 
 		for(CreatorSummary author : comicApiMarvel.getCreators().getItems()) {
 			if (comicToSave.getAuthor() != null && author.getName() != null) {
-				comicToSave.setAuthor(author.getName() + "; " + comicToSave.getAuthor());
+				comicToSave.setAuthor(author.getName() + ", " + comicToSave.getAuthor());
 			} else {
 				comicToSave.setAuthor(author.getName());
 			}
