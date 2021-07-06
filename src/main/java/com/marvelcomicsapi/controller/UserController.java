@@ -15,6 +15,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.marvelcomicsapi.entity.User;
 import com.marvelcomicsapi.objects.response.UserResponse;
 import com.marvelcomicsapi.service.UserService;
+import com.marvelcomicsapi.service.exception.DuplicatedEntryException;
 
 
 @RestController
@@ -32,7 +33,7 @@ public class UserController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Void> save(@RequestBody User dto) {
+	public ResponseEntity<Void> save(@RequestBody User dto) throws DuplicatedEntryException {
 		
 		User user = this.userService.save(dto);
 		

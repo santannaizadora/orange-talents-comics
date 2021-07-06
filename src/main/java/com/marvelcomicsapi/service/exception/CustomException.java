@@ -22,11 +22,11 @@ public class CustomException extends ResponseEntityExceptionHandler {
     }
     
     @ExceptionHandler(DuplicatedEntryException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseStatus(HttpStatus.CONFLICT)
     public final ResponseEntity<Object> handleDuplicatedEntryException(NotFoundException ex, WebRequest request) {
         ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(), request.getDescription(true));
 
-        return new ResponseEntity<Object>(exceptionResponse, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<Object>(exceptionResponse, HttpStatus.CONFLICT);
     }
     
     @ExceptionHandler(Exception.class)
