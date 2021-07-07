@@ -3,6 +3,7 @@ package com.marvelcomicsapi.controller;
 import java.net.URI;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,13 +34,10 @@ public class UserController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Void> save(@RequestBody User dto) throws DuplicatedEntryException {
+	public ResponseEntity<User> save(@RequestBody User dto) throws DuplicatedEntryException {
 		
-		User user = this.userService.save(dto);
+		return new ResponseEntity<User>(userService.save(dto), HttpStatus.CREATED);
 		
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{idUser}").buildAndExpand(user.getIdUser()).toUri();
-
-		return ResponseEntity.created(uri).build();
 	}
 	
 }

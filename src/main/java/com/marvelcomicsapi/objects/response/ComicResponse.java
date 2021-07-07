@@ -1,8 +1,5 @@
 package com.marvelcomicsapi.objects.response;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ComicResponse {
 
 	private Integer idComic;

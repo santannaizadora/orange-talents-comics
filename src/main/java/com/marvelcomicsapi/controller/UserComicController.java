@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.marvelcomicsapi.entity.UserComic;
 import com.marvelcomicsapi.objects.request.UserComicRequest;
+import com.marvelcomicsapi.objects.response.UserComicResponse;
 import com.marvelcomicsapi.service.UserComicService;
 
 @RestController
@@ -20,12 +21,10 @@ public class UserComicController {
 	private UserComicService userComicService;
 	
 	@PostMapping
-	public ResponseEntity<?> save(@RequestBody UserComicRequest dto) {
+	public ResponseEntity<UserComic> save(@RequestBody UserComicRequest dto) {
 		
-		
-		return new ResponseEntity<>(userComicService.save(dto), HttpStatus.CREATED);
+		return new ResponseEntity<UserComic>(userComicService.save(dto), HttpStatus.CREATED);
 		
 	}
-	
-	
+		
 }

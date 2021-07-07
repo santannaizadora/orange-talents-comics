@@ -1,6 +1,6 @@
 package com.marvelcomicsapi.service.exception;
 
-public class DuplicatedEntryException extends Exception {
+public class DuplicatedEntryException extends RuntimeException {
 	
 	private static final long serialVersionUID = 1L;
 

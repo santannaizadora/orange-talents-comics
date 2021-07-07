@@ -2,10 +2,13 @@ package com.marvelcomicsapi.objects.response;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class UserComicResponse {
 
 	private Integer idUserComic;
 	private Date date;
+	@JsonIgnore
 	private UserResponse user;
 	private ComicResponse comic;
 	
