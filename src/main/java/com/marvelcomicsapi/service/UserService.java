@@ -1,17 +1,11 @@
 package com.marvelcomicsapi.service;
 
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Optional;
-import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.marvelcomicsapi.entity.User;
-import com.marvelcomicsapi.entity.UserComic;
-import com.marvelcomicsapi.objects.response.ComicResponse;
-import com.marvelcomicsapi.objects.response.UserComicResponse;
 import com.marvelcomicsapi.objects.response.UserResponse;
 import com.marvelcomicsapi.repository.UserRepository;
 import com.marvelcomicsapi.service.exception.DuplicatedEntryException;
